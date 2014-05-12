@@ -2,14 +2,14 @@ package Maze;
 
 public class MazeEnums {
 
-	enum Direction {
+	public enum Direction {
 		NORTH,
 		SOUTH,
 		EAST,
 		WEST
 	}
 	
-	enum RoomType {
+	public enum RoomType {
 		WALL,
 		PATH,
 		DOOR,
