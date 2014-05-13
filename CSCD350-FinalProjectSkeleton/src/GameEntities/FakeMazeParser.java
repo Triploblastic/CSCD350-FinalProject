@@ -9,11 +9,12 @@ public class FakeMazeParser implements MazeParser {
 	public MazeNode parseMaze(RoomType[][] maze) {
 		MazeNode result = new MazeNode();
 		for (int x = 0; x < maze.length; x++) {
-			for (int j = 0; j < maze.length; j++) {
+			for (int j = 0; j < maze[x].length; j++) {
 				
 			}
 		}
 		return new MazeNode();
 	}
 
+	
 }

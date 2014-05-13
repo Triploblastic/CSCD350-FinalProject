@@ -5,8 +5,12 @@ public class MazeNode {
 	private MazeNode northNode, southNode, eastNode, westNode;
 	private MazeRoom mazeRoom;
 	
-	public MazeNode movePleayer(MazeEnums.Direction direction) {
+	public MazeNode movePlayer(MazeEnums.Direction direction) {
 		return null;
+	}
+	
+	public void setMazeRoom(MazeRoom room) {
+		mazeRoom = room;
 	}
 	
 	public MazeNode getNode(MazeEnums.Direction direction){
