@@ -7,6 +7,7 @@ public class MazeNode {
 	
 	public MazeNode movePlayer(MazeEnums.Direction direction) {
 		return null;
+		
 	}
 	
 	public void setMazeRoom(MazeRoom room) {

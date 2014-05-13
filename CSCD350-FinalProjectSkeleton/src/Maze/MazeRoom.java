@@ -18,6 +18,10 @@ public class MazeRoom {
 		this.enterBehavior = enterBehavior;
 	}
 	
+	public void setItem(Item item){
+		winItem = item;
+	}
+	
 	public void leave() {
 		
 	}
