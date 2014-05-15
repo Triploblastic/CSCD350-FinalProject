@@ -17,6 +17,8 @@ public class MazeBuilder {
 	}
 	
 	public MazeNode buildMaze(int size){
+		if (size % 2 ==0)
+			throw new IllegalArgumentException("The maze must be an odd size");
 		return mazeParser.parseMaze(mazeGenerator.createMaze(size));
 	}
 }
