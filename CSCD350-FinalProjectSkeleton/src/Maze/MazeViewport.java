@@ -3,8 +3,8 @@ package Maze;
 public class MazeViewport {
 	private MazeNode current;
 	
-	public MazeViewport(MazeNode startLocation){
-		current = startLocation;
+	public MazeViewport(MazeNode startNode){
+		this.current = startNode;
 	}
 	
 	public MazeNode getCurrentLocation(){

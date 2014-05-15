@@ -2,10 +2,10 @@ package Maze;
 
 public class DoorRoomEnterBehavior implements MazeRoomEnterBehavior {
 
+	//assume that all doors are unlocked right now
 	@Override
 	public boolean enter() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 }

@@ -1,7 +1,6 @@
 package GameEntities;
 
-import Maze.MazeEnums.Direction;
-import Maze.MazeEnums.RoomType;
+import Maze.MazeEnums.*;
 import Maze.MazeNode;
 
 public class DefaultMazeParser implements MazeParser {

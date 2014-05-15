@@ -5,7 +5,8 @@ import GameEntities.Player;
 public class MazeRoom {
 	private Item winItem;
 	private MazeRoomEnterBehavior enterBehavior;
-	
+
+
 	public boolean enter() {
 		if(enterBehavior.enter()){
 			Player.getInstance().addItem(winItem);
@@ -13,16 +14,23 @@ public class MazeRoom {
 		}
 		return false;
 	}
-	
-	public void setEnterBehavior(MazeRoomEnterBehavior enterBehavior){
-		this.enterBehavior = enterBehavior;
-	}
-	
+
 	public void setItem(Item item){
 		winItem = item;
 	}
-	
+
+
 	public void leave() {
-		
+
+
+	}
+
+	public MazeRoomEnterBehavior getEnterBehavior(){
+		return this.enterBehavior;
+	}
+	
+	public void setEnterBehavior(MazeRoomEnterBehavior enterBehavior){
+		this.enterBehavior=enterBehavior;
 	}
 }
+
