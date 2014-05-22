@@ -1,3 +1,4 @@
+package MazeGeneration;
 //package net.datastructures;
 //begin#fragment EmptyStackException
 /**

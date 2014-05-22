@@ -1,3 +1,4 @@
+package MazeGeneration;
 
 /**
  * Runtime exception thrown when the capacity of the array used by an

@@ -9,15 +9,15 @@ public class Player {
 	private int x, y, tileX, tileY;
 	private Image player;
 	
-	public Player(){
+	public Player(int xStart, int yStart){
 		ImageIcon img=new ImageIcon("player.png");
 		this.player=img.getImage();
 		
 //		this.x=32;
 //		this.y=32;
 		
-		this.tileX=1;
-		this.tileY=1;
+		this.tileX=xStart;
+		this.tileY=yStart;
 	}
 	
 	public Image getPlayer(){
@@ -27,10 +27,12 @@ public class Player {
 	public void move(int tx, int ty){
 //		this.x+=dx;
 //		this.y+=dy;
-		
 		this.tileX+=tx;
 		this.tileY+=ty;
+		
+		
 	}
+	
 	
 //	public int getX(){
 //		return this.x;

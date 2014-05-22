@@ -1,3 +1,4 @@
+package MazeGeneration;
 
  /** 
   * Interface for a stack: a collection of objects that are inserted
