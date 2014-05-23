@@ -3,20 +3,18 @@ import java.sql.*;
 
 /*Parent class for the factories that access their respective 
  * databases to pull tuples & create TriviaQuestion objects.*/
-public class QuestionFactory {
+public interface QuestionFactory {
 	
-	public static TriviaQuestion buildQuestion(QuestionType type) {
-		TriviaQuestion q = null;
+	public TriviaQuestion buildQuestion() throws BuildLimitExceededException;
+	
+	public class BuildLimitExceededException extends Exception {
 		
-		switch (type) {
-		case MOVIE :
-			q = MovieTriviaQuestionFactory.buildQuestion();
-			break;
+		public BuildLimitExceededException() {}
+		
+		public String toString() {
+			return "Max number of questions built.";
 		}
 		
-		return q;
 	}
-	
-
 
 }

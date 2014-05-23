@@ -1,52 +1,47 @@
 package TriviaQuestions;
 import java.sql.*;
 
-/*Connects to MovieQuoteTrivia.db.
- *Sets MovieTriviaQuestion prompt, answer & wrongAnswers
- */
-class MovieTriviaQuestionFactory {
+/*Sets MovieTriviaQuestion prompt, answer & answerSet*/
+public class MovieTriviaQuestionFactory implements QuestionFactory {
+	private MovieTriviaDatabaseManager dbManager = new MovieTriviaDatabaseManager();
+	private int buildLimit = 0;
+	private int questionsBuilt = 0;
 	
-	private static int id = 0; //primary key for MovieQuoteTrivia.db
-	private static Connection c;
-	private static Statement s;
-	private static ResultSet rs; //static?
-	
-	public static TriviaQuestion buildQuestion() {
-		TriviaQuestion q = new MovieTriviaQuestion();
+	public MovieTriviaQuestionFactory() {
 		try {
-		connectToDatabase();
-		System.out.println("connection successful");
-		retrieveResultSet();
-		System.out.println("query successful");
+			dbManager.connectToDatabase();
+			buildLimit = dbManager.getTupleCount();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public TriviaQuestion buildQuestion() throws BuildLimitExceededException {
+		questionsBuilt++;
+		if (questionsBuilt > buildLimit)
+			throw new BuildLimitExceededException();
+		MovieTriviaQuestion q = new MovieTriviaQuestion();
+		try {
+		//System.out.println("connection successful");
+		ResultSet rs = dbManager.getRandomTuple();
+		//System.out.println("query successful");
 		q.setPrompt(rs.getString(2));
 		q.setAnswer(rs.getString(3));
-		setWrongAnswers(q);
+		setAnswerSet(q, rs);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return q;	
 	}
 	
-	private static void connectToDatabase() throws Exception {
-		Class.forName("org.sqlite.JDBC");
-		c = DriverManager.getConnection("jdbc:sqlite:MovieQuoteTrivia.db");
-		s = c.createStatement();
-		System.out.println("Connection successfull");		
+	/*creates randomly ordered answerSet from what the data base query returned*/
+	private static void setAnswerSet(MovieTriviaQuestion q, ResultSet rs) throws Exception {
+		String[] answerSet = new String[4];
+		//answerSet[0] = q.getAnswer();
+		for(int i = 0; i < 4; i++)
+			answerSet[i] = rs.getString(i+3);
+		q.setAnswerSet(answerSet);
+		q.shuffleAnswerSet();
 	}
-	
-	private static void retrieveResultSet() throws Exception {
-		id++;
-		String sql = "SELECT * FROM MovieTrivia WHERE id = " + id;
-		rs = s.executeQuery(sql);
-	}
-	
-	private static void setWrongAnswers(TriviaQuestion q) throws Exception {
-		String[] wrongAnswers = new String[3];
-		for(int i = 0; i < 3; i++)
-			wrongAnswers[i] = rs.getString(i+4);
-		((MovieTriviaQuestion)q).setWrongAnswers(wrongAnswers);
-	}
-
-	
 	
 }
