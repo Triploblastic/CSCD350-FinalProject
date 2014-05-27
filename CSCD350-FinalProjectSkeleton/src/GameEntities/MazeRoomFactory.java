@@ -1,6 +1,13 @@
 package GameEntities;
 
 import Maze.MazeEnums.RoomType;
+import MazeRoomLogic.DoorRoomEnterBehavior;
+import MazeRoomLogic.ExitRoomEnterBehavior;
+import MazeRoomLogic.MazeRoom;
+import MazeRoomLogic.MazeRoomEnterBehavior;
+import MazeRoomLogic.QuestionRoomEnterBehavior;
+import MazeRoomLogic.StartRoomEnterBehavior;
+import MazeRoomLogic.WallRoomEnterBehavior;
 import Maze.*;
 
 public class MazeRoomFactory {

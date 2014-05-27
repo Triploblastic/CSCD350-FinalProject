@@ -1,6 +1,6 @@
 package GameEntities;
 
-import Maze.MazeNode;
+import MazeRoomLogic.MazeNode;
 
 public class MazeBuilder {
 	private MazeGenerator mazeGenerator;

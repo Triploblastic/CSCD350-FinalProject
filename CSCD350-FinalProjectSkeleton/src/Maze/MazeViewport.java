@@ -1,5 +1,7 @@
 package Maze;
 
+import MazeRoomLogic.MazeNode;
+
 public class MazeViewport {
 	private MazeNode current;
 	

@@ -1,6 +1,7 @@
 package Maze;
 
 import GameEntities.Player;
+import Maze.Item;
 
 public class MazeRoom {
 	private Item winItem;

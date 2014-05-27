@@ -1,7 +1,7 @@
 package GameEntities;
 
 import Maze.MazeEnums.Direction;
-import Maze.MazeNode;
+import MazeRoomLogic.MazeNode;
 import Maze.MazeViewport;
 
 public class TestClient {

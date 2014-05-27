@@ -4,10 +4,14 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
+import MazeRoomLogic.Item;
+import MazeRoomLogic.MazeNode;
+
 public class Player {
 	
 	private int x, y, tileX, tileY;
 	private Image player;
+	private MazeNode currentMazeNode;
 	
 	public Player(int xStart, int yStart){
 		ImageIcon img=new ImageIcon("player.png");
@@ -20,7 +24,7 @@ public class Player {
 		this.tileY=yStart;
 	}
 	
-	public Image getPlayer(){
+	public Image getPlayerImage(){
 		return this.player;
 	}
 	
@@ -33,6 +37,9 @@ public class Player {
 		
 	}
 	
+	public void addItem(Item item){
+		
+	}
 	
 //	public int getX(){
 //		return this.x;

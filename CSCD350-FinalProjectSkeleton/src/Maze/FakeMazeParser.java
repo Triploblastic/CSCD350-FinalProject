@@ -2,6 +2,7 @@ package Maze;
 
 import GameEntities.MazeParser;
 import Maze.MazeEnums.RoomType;
+import MazeRoomLogic.MazeNode;
 
 public class FakeMazeParser implements MazeParser {
 

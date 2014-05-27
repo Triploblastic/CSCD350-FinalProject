@@ -1,5 +1,8 @@
 package Maze;
 
+import Maze.MazeEnums;
+import Maze.MazeEnums.Direction;
+
 public class MazeNode {
 
 	private MazeNode northNode, southNode, eastNode, westNode;

@@ -49,9 +49,10 @@ public class Board extends JPanel implements ActionListener{
 			}
 		}
 		
-		g.drawImage(p.getPlayer(), p.getTileX()*32, p.getTileY()*32, null);
+		g.drawImage(p.getPlayerImage(), p.getTileX()*32, p.getTileY()*32, null);
 	}
 	
+	//This is where we merge our room behavior code.
 	public class Al extends KeyAdapter{
 		public void keyPressed(KeyEvent e){
 			int keycode=e.getKeyCode();
