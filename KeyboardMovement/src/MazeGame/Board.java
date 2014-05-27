@@ -9,7 +9,8 @@ import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-import MazeGeneration.RoomType;
+import MazeRoomLogic.MazeEnums.Direction;
+import MazeRoomLogic.MazeNode;
 
 public class Board extends JPanel implements ActionListener{
 
@@ -22,6 +23,7 @@ public class Board extends JPanel implements ActionListener{
 	public Board(){
 		m=new Map();
 		p=new Player(m.getStartY(),m.getStartX());
+		
 		addKeyListener(new Al());
 		setFocusable(true);
 		timer = new Timer(25, this);
@@ -39,11 +41,11 @@ public class Board extends JPanel implements ActionListener{
 
 		for(int i=0; i<m.MAZE_SIZE; i++){
 			for(int j=0; j<m.MAZE_SIZE; j++){
-				if(m.getMap(j, i).equals(RoomType.PATH)){
+				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.PATH)){
 					g.drawImage(m.getRoomImage(), j*32, i*32, null);
 				}
 				
-				if(m.getMap(j, i).equals(RoomType.WALL)){
+				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.WALL)){
 					g.drawImage(m.getWallImage(), j*32, i*32, null);
 				}
 			}
@@ -58,19 +60,19 @@ public class Board extends JPanel implements ActionListener{
 			int keycode=e.getKeyCode();
 			
 			if(keycode==KeyEvent.VK_W){
-				if(!m.getMap(p.getTileX(), p.getTileY()-1).equals(RoomType.WALL))
+				if(m.tryMovePlayer(Direction.NORTH))
 					p.move(0, -1);
 			}
 			if(keycode==KeyEvent.VK_S){
-				if(!m.getMap(p.getTileX(), p.getTileY()+1).equals(RoomType.WALL))
+				if(m.tryMovePlayer(Direction.SOUTH))
 					p.move(0, 1);
 			}
 			if(keycode==KeyEvent.VK_A){
-				if(!m.getMap(p.getTileX()-1, p.getTileY()).equals(RoomType.WALL))
+				if(m.tryMovePlayer(Direction.WEST))
 					p.move(-1, 0);
 			}
 			if(keycode==KeyEvent.VK_D){
-				if(!m.getMap(p.getTileX()+1, p.getTileY()).equals(RoomType.WALL))
+				if(m.tryMovePlayer(Direction.EAST))
 					p.move(1, 0);				
 			}			
 		}

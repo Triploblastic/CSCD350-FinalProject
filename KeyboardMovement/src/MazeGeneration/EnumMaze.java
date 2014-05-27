@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import MazeRoomLogic.MazeEnums.RoomType;
+
 /* Richard Sipes 
  * CSCD350
  * Generates a 2D maze with RoomType enums: START, EXIT, DOOR, PATH. 

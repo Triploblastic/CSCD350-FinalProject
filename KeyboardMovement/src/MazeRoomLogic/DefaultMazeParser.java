@@ -1,13 +1,14 @@
 package MazeRoomLogic;
 
 
+
 import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeEnums.RoomType;
 import MazeRoomLogic.MazeNode;
 
 public class DefaultMazeParser {
 
-	public MazeNode parseMaze(RoomType[][] maze) {
+	public static MazeNode parseMaze(RoomType[][] maze) {
 		MazeNode result = new MazeNode();
 		MazeNode current = result;
 		MazeNode nextRow = result;

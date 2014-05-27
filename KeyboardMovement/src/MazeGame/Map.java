@@ -8,16 +8,20 @@ import java.util.Scanner;
 import javax.swing.ImageIcon;
 
 import MazeGeneration.EnumMaze;
-import MazeGeneration.RoomType;
+import MazeRoomLogic.DefaultMazeParser;
+import MazeRoomLogic.MazeEnums.Direction;
+import MazeRoomLogic.MazeNode;
 
 public class Map {
 
 	private Scanner fin;
 	private String fileName="map.txt";
 	//private String Map[]=new String[14];
-	private RoomType[][] Map = new RoomType[MAZE_SIZE][MAZE_SIZE];
+	private MazeRoomLogic.MazeEnums.RoomType[][] Map = new MazeRoomLogic.MazeEnums.RoomType[MAZE_SIZE][MAZE_SIZE];
 	private EnumMaze mazeGen;
-	private Image room, wall;
+	private Image room, wall, start, exit, door;
+	private MazeNode currentMazeNode;
+	
 	public static final int MAZE_SIZE = 15;
 	
 	
@@ -33,7 +37,7 @@ public class Map {
 		
 		mazeGen = new EnumMaze(MAZE_SIZE);
 		Map = mazeGen.getMaze();
-		
+		currentMazeNode = DefaultMazeParser.parseMaze(Map);
 		/*
 		openFile();
 		readFile();
@@ -57,10 +61,15 @@ public class Map {
 		return mazeGen.getStart()[1];
 	}
 	
-	public RoomType getMap(int x, int y){
+	public MazeRoomLogic.MazeEnums.RoomType getMapTileType(int x, int y){
 		return Map[y][x];
 	}
 
+	public boolean tryMovePlayer(Direction direction){
+		MazeNode tempNode = currentMazeNode;
+		currentMazeNode = currentMazeNode.movePlayer(direction);
+		return !(currentMazeNode == tempNode);
+	}
 	/*
 	private void readFile() {
 		while(fin.hasNext()){

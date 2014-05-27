@@ -41,6 +41,14 @@ public class Player {
 		
 	}
 	
+	public void setCurrentMazeNode(MazeNode currentNode){
+		currentMazeNode = currentNode;
+	}
+	
+	public MazeNode getCurrentMazeNode(){
+		return currentMazeNode;
+	}
+	
 //	public int getX(){
 //		return this.x;
 //	}
