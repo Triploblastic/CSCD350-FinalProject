@@ -1,6 +1,8 @@
 package MazeRoomLogic;
 
 
+import java.util.Random;
+
 import MazeRoomLogic.DoorRoomEnterBehavior;
 import MazeRoomLogic.ExitRoomEnterBehavior;
 import MazeRoomLogic.MazeEnums.RoomType;
@@ -13,6 +15,7 @@ import MazeRoomLogic.WallRoomEnterBehavior;
 public class MazeRoomFactory {
 
 	private static MazeRoomFactory instance = null;
+	private static Random rand = new Random();
 	
 	private MazeRoomFactory(){
 		
@@ -28,12 +31,50 @@ public class MazeRoomFactory {
 	public MazeRoom getMazeRoom(RoomType roomType){
 		MazeRoom result = new MazeRoom();
 		result.setEnterBehavior(getBehavior(roomType));
-		result.setItem(getItem());
+		result.setWinItem(getWinEffect(roomType));
+		result.setLoseItem(getLoseEffect(roomType));
 		return result;
 	}
 	
-	private Item getItem() {
-		return new Item();
+	private PlayerEffect getWinEffect(RoomType roomType) {
+		PlayerEffect effect;
+		switch(roomType){
+		case DOOR:
+			break;
+		case EXIT:
+			break;
+		case PATH:
+			if(rand.nextInt(100) < 30)
+			break;
+		case START:
+			break;
+		case WALL:
+			break;
+		default:
+			break;
+		
+		}
+		return effect;
+	}
+	
+	private PlayerEffect getLoseEffect(RoomType roomType) {
+		PlayerEffect effect;
+		switch(roomType){
+		case DOOR:
+			break;
+		case EXIT:
+			break;
+		case PATH:
+			break;
+		case START:
+			break;
+		case WALL:
+			break;
+		default:
+			break;
+		
+		}
+		return effect;
 	}
 	
 	private MazeRoomEnterBehavior getBehavior(RoomType roomType){

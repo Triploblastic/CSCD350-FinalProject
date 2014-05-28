@@ -4,7 +4,7 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import MazeRoomLogic.Item;
+import MazeRoomLogic.PlayerEffect;
 import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeNode;
 
@@ -15,15 +15,26 @@ public class Player {
 	private MazeNode currentMazeNode;
 	private Direction facingDirection;
 	private int health;
+	private int keys;
+	private static Player Instance;
 	
-	public Player(int xStart, int yStart){
+	private Player(){
 		facingDirection = Direction.SOUTH;
 		health = 3;
 //		this.x=32;
 //		this.y=32;
 		
-		this.tileX=xStart;
-		this.tileY=yStart;
+	}
+	
+	public static Player getInstance(){
+		if(Instance == null)
+			Instance = new Player();
+		return Instance;
+	}
+	
+	public void setStartLocation(int xStart, int yStart){
+		this.tileX = xStart;
+		this.tileY = yStart;
 	}
 	
 	public Image getPlayerImage(){
@@ -59,16 +70,24 @@ public class Player {
 		this.tileY+=ty;
 	}
 	
-	public void addItem(Item item){
-		
+	public void increaseHealth(){
+		health = health < 3 ? health+1 : 3; 
 	}
 	
-	public void loseHealth(){
-		health = health-1 >= 0 ? health-1 : 0;
+	public void decreaseHealth(){
+		health = health > 0 ? health-1 : 0;
 	}
 	
-	public void gainHealth(){
-		health = health + 1 <= 3 ? health +1 : 3;
+	public void addKey(){
+		keys++;
+	}
+	
+	public void removeKey(){
+		keys = keys > 0 ? keys-1 : 0;
+	}
+	
+	public int getKeys(){
+		return keys;
 	}
 	
 	public int getHealth(){

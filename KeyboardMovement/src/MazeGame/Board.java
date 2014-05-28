@@ -22,7 +22,8 @@ public class Board extends JPanel implements ActionListener{
 	
 	public Board(){
 		m=new Map();
-		p=new Player(m.getStartY(),m.getStartX());
+		p=Player.getInstance();
+		p.setStartLocation(m.getStartY(),m.getStartX());
 		
 		addKeyListener(new Al());
 		setFocusable(true);
