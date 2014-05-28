@@ -30,10 +30,17 @@ public class Map {
 		ImageIcon img=new ImageIcon("grass.png");
 		room=img.getImage();
 		
-		img=new ImageIcon("wall.png");
+		img=new ImageIcon("Stone_Tile.gif");
 		wall=img.getImage();
 		
+		img = new ImageIcon("gate1.gif");
+		door=img.getImage();
 		
+		img = new ImageIcon("exit.png");
+		exit = img.getImage();
+		
+		img = new ImageIcon("start.png");
+		start = img.getImage();
 		
 		mazeGen = new EnumMaze(MAZE_SIZE);
 		Map = mazeGen.getMaze();
@@ -51,6 +58,18 @@ public class Map {
 	
 	public Image getWallImage(){
 		return wall;
+	}
+	
+	public Image getDoorImage(){
+		return door;
+	}
+	
+	public Image getExitImage(){
+		return exit;
+	}
+	
+	public Image getStartImage(){
+		return start;
 	}
 	
 	public int getStartX(){

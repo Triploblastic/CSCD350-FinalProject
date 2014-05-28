@@ -48,6 +48,18 @@ public class Board extends JPanel implements ActionListener{
 				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.WALL)){
 					g.drawImage(m.getWallImage(), j*32, i*32, null);
 				}
+				
+				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.DOOR)){
+					g.drawImage(m.getDoorImage(), j*32, i*32, null);
+				}
+				
+				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.EXIT)){
+					g.drawImage(m.getExitImage(), j*32, i*32, null);
+				}
+				
+				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.START)){
+					g.drawImage(m.getStartImage(), j*32, i*32, null);
+				}
 			}
 		}
 		
@@ -60,18 +72,22 @@ public class Board extends JPanel implements ActionListener{
 			int keycode=e.getKeyCode();
 			
 			if(keycode==KeyEvent.VK_W){
+				p.setDirection(Direction.NORTH);
 				if(m.tryMovePlayer(Direction.NORTH))
 					p.move(0, -1);
 			}
 			if(keycode==KeyEvent.VK_S){
+				p.setDirection(Direction.SOUTH);
 				if(m.tryMovePlayer(Direction.SOUTH))
 					p.move(0, 1);
 			}
 			if(keycode==KeyEvent.VK_A){
+				p.setDirection(Direction.WEST);
 				if(m.tryMovePlayer(Direction.WEST))
 					p.move(-1, 0);
 			}
 			if(keycode==KeyEvent.VK_D){
+				p.setDirection(Direction.EAST);
 				if(m.tryMovePlayer(Direction.EAST))
 					p.move(1, 0);				
 			}			

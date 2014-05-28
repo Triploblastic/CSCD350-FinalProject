@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import MazeRoomLogic.Item;
+import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeNode;
 
 public class Player {
@@ -12,10 +13,10 @@ public class Player {
 	private int x, y, tileX, tileY;
 	private Image player;
 	private MazeNode currentMazeNode;
+	private Direction facingDirection;
 	
 	public Player(int xStart, int yStart){
-		ImageIcon img=new ImageIcon("player.png");
-		this.player=img.getImage();
+		facingDirection = Direction.SOUTH;
 		
 //		this.x=32;
 //		this.y=32;
@@ -25,6 +26,27 @@ public class Player {
 	}
 	
 	public Image getPlayerImage(){
+		String playerImg;
+		switch(facingDirection){
+		case EAST:
+			playerImg = "playerEast.png";
+			break;
+		case NORTH:
+			playerImg = "playerNorth.png";
+			break;
+		case SOUTH:
+			playerImg = "playerSouth.png";
+			break;
+		case WEST:
+			playerImg = "playerWest.png";
+			break;
+		default:
+			playerImg = "playerSouth.png";
+			break;
+		
+		}
+		ImageIcon img = new ImageIcon(playerImg);
+		this.player=img.getImage();
 		return this.player;
 	}
 	
@@ -39,6 +61,10 @@ public class Player {
 	
 	public void addItem(Item item){
 		
+	}
+	
+	public void setDirection(Direction direction){
+		facingDirection = direction;
 	}
 	
 	public void setCurrentMazeNode(MazeNode currentNode){
