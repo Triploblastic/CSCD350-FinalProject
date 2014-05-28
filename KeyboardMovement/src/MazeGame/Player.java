@@ -14,10 +14,11 @@ public class Player {
 	private Image player;
 	private MazeNode currentMazeNode;
 	private Direction facingDirection;
+	private int health;
 	
 	public Player(int xStart, int yStart){
 		facingDirection = Direction.SOUTH;
-		
+		health = 3;
 //		this.x=32;
 //		this.y=32;
 		
@@ -26,41 +27,52 @@ public class Player {
 	}
 	
 	public Image getPlayerImage(){
-		String playerImg;
+		StringBuilder playerImg;
 		switch(facingDirection){
 		case EAST:
-			playerImg = "playerEast.png";
+			playerImg = new StringBuilder("playerEast");
 			break;
 		case NORTH:
-			playerImg = "playerNorth.png";
+			playerImg = new StringBuilder("playerNorth");
 			break;
 		case SOUTH:
-			playerImg = "playerSouth.png";
+			playerImg = new StringBuilder("playerSouth");
 			break;
 		case WEST:
-			playerImg = "playerWest.png";
+			playerImg = new StringBuilder("playerWest");
 			break;
 		default:
-			playerImg = "playerSouth.png";
+			playerImg = new StringBuilder("playerSouth");
 			break;
-		
 		}
-		ImageIcon img = new ImageIcon(playerImg);
+		//String healthMod = "";
+		String healthMod = health <= 3 && health >= 0 ? Integer.toString(health) : "3";
+		playerImg.append(healthMod + ".png");
+		
+		ImageIcon img = new ImageIcon(playerImg.toString());
 		this.player=img.getImage();
 		return this.player;
 	}
 	
 	public void move(int tx, int ty){
-//		this.x+=dx;
-//		this.y+=dy;
 		this.tileX+=tx;
 		this.tileY+=ty;
-		
-		
 	}
 	
 	public void addItem(Item item){
 		
+	}
+	
+	public void loseHealth(){
+		health = health-1 >= 0 ? health-1 : 0;
+	}
+	
+	public void gainHealth(){
+		health = health + 1 <= 3 ? health +1 : 3;
+	}
+	
+	public int getHealth(){
+		return health;
 	}
 	
 	public void setDirection(Direction direction){
@@ -74,14 +86,6 @@ public class Player {
 	public MazeNode getCurrentMazeNode(){
 		return currentMazeNode;
 	}
-	
-//	public int getX(){
-//		return this.x;
-//	}
-//	
-//	public int getY(){
-//		return this.y;
-//	}
 	
 	public int getTileX(){
 		return this.tileX;
