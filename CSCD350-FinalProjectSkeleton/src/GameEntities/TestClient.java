@@ -27,13 +27,16 @@ public class TestClient {
 		QuestionFactory factory = new MovieTriviaQuestionFactory();
 		TriviaQuestion q = null;
 		try {
-			for (int i = 0; i <50; i++) {
+			for (int i = 0; i < 1; i++) {
 				q = factory.buildQuestion();
 				System.out.println(q.toString());
+				q.displayPrompt();
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
+		
+		
 		
 	}
 }

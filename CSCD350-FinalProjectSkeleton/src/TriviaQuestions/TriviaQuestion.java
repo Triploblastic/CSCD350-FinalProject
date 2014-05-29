@@ -1,24 +1,30 @@
 package TriviaQuestions;
 
-public abstract class TriviaQuestion {
-	String prompt = null;
-	String answer = null;
+import javax.swing.JFrame;
+
+public class TriviaQuestion {
+	private TriviaAnswerSet answerSet = null;
+	private TriviaQuestionPrompt prompt = null;
 	
-	public TriviaQuestion() {/*throw exception?*/}
+	public TriviaQuestion() {}
 	
 	/*getters*/
-	public String getPrompt() {return this.prompt;}
-	public String getAnswer() {return this.answer;}
+	public TriviaQuestionPrompt getPrompt() {return this.prompt;}
+	public TriviaAnswerSet getAnswerSet() {return this.answerSet;}
 	
 	/*setters*/
-	public void setPrompt(String s) {this.prompt = s;}
-	public void setAnswer(String s) {this.answer = s;}
+	public void setTriviaQuestionPrompt(TriviaQuestionPrompt p) {this.prompt = p;}
+	public void setTriviaAnswerSet(TriviaAnswerSet a) {this.answerSet = a;}
 	
-	public void displayPrompt() {System.out.println(this.prompt + "");}
-	public void displayAnswerSet() {System.out.println(this.prompt + "");}
+	public boolean submitResponse(String response) {
+		return true;
+	}
+	
+	//create prompt upon displayPrompt() method call?
+	public void displayPrompt() {prompt.displayPrompt();}
 	
 	public String toString() {
-		return "Prompt:" + this.getPrompt() + "\nAnswer: " + this.getAnswer();
+		return "Prompt:" + this.getPrompt().toString() + "\nAnswer Set: " + this.answerSet.toString() + "\nAnswer: " +this.answerSet.getAnswer();
 	}
 
 }

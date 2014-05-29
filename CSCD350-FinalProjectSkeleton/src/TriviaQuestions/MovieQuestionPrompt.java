@@ -1,5 +1,8 @@
 package TriviaQuestions;
 
-public class MovieQuestionPrompt {
+import java.awt.EventQueue;
+
+public class MovieQuestionPrompt extends TriviaQuestionPrompt {
+
 
 }
