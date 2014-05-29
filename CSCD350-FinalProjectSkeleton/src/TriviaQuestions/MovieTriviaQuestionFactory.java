@@ -38,6 +38,8 @@ public class MovieTriviaQuestionFactory extends QuestionFactory {
 			//System.out.println("setPrompt()");
 			p.setRadioButtons(a.getAnswerSet());
 			//System.out.println("setRadioButtons");
+			//((MovieTriviaResponseHandler)a.getResponseHandler()).setResponseHandlerButtons(p);
+			//System.out.println("setResponseHandlerButtons()");
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -49,9 +51,9 @@ public class MovieTriviaQuestionFactory extends QuestionFactory {
 		String[] answerSet = new String[4];
 		for(int i = 0; i < 4; i++)
 			answerSet[i] = rs.getString(i+3);
-		System.out.println("starting to setAnswerset");
+		//System.out.println("starting to setAnswerset");
 		a.setAnswerSet(answerSet);
-		System.out.println("setAnswerSet(inner)");
+		//System.out.println("setAnswerSet(inner)");
 		a.shuffleAnswerSet();
 	}
 	

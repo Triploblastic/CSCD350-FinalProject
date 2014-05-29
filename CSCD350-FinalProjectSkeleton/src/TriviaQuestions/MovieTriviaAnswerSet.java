@@ -7,6 +7,8 @@ public class MovieTriviaAnswerSet extends TriviaAnswerSet {
 	private String[] answerSet = new String[4];
 	private String answer;
 	
+	MovieTriviaAnswerSet() {this.responseHandler = new MovieTriviaResponseHandler();}
+	
 	/*getters*/
 	public TriviaResponseHandler getResponseHandler() {return responseHandler;}
 	public String getAnswer() {return answer;}
@@ -23,9 +25,6 @@ public class MovieTriviaAnswerSet extends TriviaAnswerSet {
 			this.answerSet[i] = ara[i];
 		}
 	}
-
-
-	MovieTriviaAnswerSet() {responseHandler = new TriviaResponseHandler();}
 	
 	public boolean validateResponse(String response) {
 		return true;

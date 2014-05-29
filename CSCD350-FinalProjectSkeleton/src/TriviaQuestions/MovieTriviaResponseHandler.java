@@ -5,5 +5,8 @@ import java.awt.event.ActionListener;
 
 public class MovieTriviaResponseHandler extends TriviaResponseHandler {
 
+	public boolean validateResponse(String response) {
+		return true;
+	}
 
 }

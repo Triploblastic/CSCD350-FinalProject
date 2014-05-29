@@ -16,11 +16,8 @@ public class TriviaQuestion {
 	public void setTriviaQuestionPrompt(TriviaQuestionPrompt p) {this.prompt = p;}
 	public void setTriviaAnswerSet(TriviaAnswerSet a) {this.answerSet = a;}
 	
-	public boolean submitResponse(String response) {
-		return true;
-	}
+	public boolean submitResponse() {return true;}
 	
-	//create prompt upon displayPrompt() method call?
 	public void displayPrompt() {prompt.displayPrompt();}
 	
 	public String toString() {

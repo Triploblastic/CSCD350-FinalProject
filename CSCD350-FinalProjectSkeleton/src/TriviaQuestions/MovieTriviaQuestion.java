@@ -26,10 +26,10 @@ public class MovieTriviaQuestion extends TriviaQuestion {
 		catch (Exception e) {e.printStackTrace();}
 	}
 	
-//	public boolean submitResponse(String response) {
-//		answerSet = new TriviaAnswerSet();
-//		return answerSet.validateResponse(response);
-//	}
+	@Override
+	public boolean submitResponse() {
+		return answerSet.getAnswer().equals(prompt.getSelection());
+	}
 	
 //	public String toString() {
 //		String answerSet = "";

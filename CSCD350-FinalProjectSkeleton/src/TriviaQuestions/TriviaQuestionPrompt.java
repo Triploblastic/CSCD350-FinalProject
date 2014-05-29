@@ -8,10 +8,10 @@ import javax.swing.border.EmptyBorder;
 
 /*builds empty JFrame*/
 public abstract class TriviaQuestionPrompt extends JFrame {
-
 	protected JPanel contentPane;
-
 	private JFrame frame;
+	private String selection = null;
+	private boolean submitAnswer = false;
 	
 	public TriviaQuestionPrompt() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,14 +22,24 @@ public abstract class TriviaQuestionPrompt extends JFrame {
 		contentPane.setLayout(null);
 	}
 	
-	//public JPanel getContentPane() {return (JPanel) this.frame.getContentPane();}
-	
+
+	/*getters*/
+	public JPanel getContentPane() {return contentPane;}
+	public JFrame getFrame() {return frame;}
+	public String getSelection() {return selection;}
+
+	/*setters*/
+	public void setContentPane(JPanel contentPane) {this.contentPane = contentPane;}
+	public void setFrame(JFrame frame) {this.frame = frame;}
+	public void setSelection(String selection) {this.selection = selection;}
+	public void setSubmitAnswer(boolean submitAnswer) {this.submitAnswer = submitAnswer;}
+
 	public void displayPrompt() {
 		try {this.frame.setVisible(true);} 
 		catch (Exception e) {e.printStackTrace();}
 	}
 	
-	public JFrame getFrame() {return this.frame;}
+	public boolean answerSubmitted() {return this.submitAnswer;}
 
 
 }

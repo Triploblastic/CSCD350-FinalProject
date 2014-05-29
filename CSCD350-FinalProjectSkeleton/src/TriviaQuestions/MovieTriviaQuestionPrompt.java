@@ -24,8 +24,14 @@ import javax.swing.JLabel;
 public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	private JFrame pathFrame;
 	private JLabel prompt;
+	private JButton submit; 
 	private JRadioButton option1, option2, option3, option4;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private ActionListener radioListener = new RadioButtonListener();
+	private ActionListener submitListener = new SubmitListener();
+	private String selection = null;
+	private boolean submitAnswer = false;
+	
 
 	public MovieTriviaQuestionPrompt() {
 
@@ -36,30 +42,42 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 		option1 = new JRadioButton("New radio button");
 		buttonGroup.add(option1);
 		option1.setBounds(27, 94, 356, 25);
+		option1.addActionListener(radioListener);
 		contentPane.add(option1);
 		
 		option2 = new JRadioButton("New radio button");
 		buttonGroup.add(option2);
 		option2.setBounds(27, 124, 356, 25);
+		option2.addActionListener(radioListener);
 		contentPane.add(option2);
 		
 		option3 = new JRadioButton("New radio button");
 		buttonGroup.add(option3);
 		option3.setBounds(27, 154, 356, 25);
+		option3.addActionListener(radioListener);
 		contentPane.add(option3);
 		
 		option4 = new JRadioButton("New radio button");
 		buttonGroup.add(option4);
 		option4.setBounds(27, 184, 356, 25);
+		option4.addActionListener(radioListener);
 		contentPane.add(option4);
 		
-		JButton btnNewButton = new JButton("Submit");
-		btnNewButton.setBounds(163, 249, 97, 25);
-		contentPane.add(btnNewButton);
+		submit = new JButton("Submit");
+		submit.setBounds(163, 249, 97, 25);
+		contentPane.add(submit);
 	}
 
-	public void setPrompt(String prompt) {this.prompt.setText("<html>" + prompt + "</html>");}
+	/*getters*/
+	public JRadioButton getOption1() {return this.option1;}
+	public JRadioButton getOption2() {return this.option2;}
+	public JRadioButton getOption3() {return this.option3;}
+	public JRadioButton getOption4() {return this.option4;}
+	public JButton getSubmit() {return this.submit;}
+	public String getSelection() {return this.selection;}
 	
+	/*setters*/
+	public void setPrompt(String prompt) {this.prompt.setText("<html>" + prompt + "</html>");}
 	public void setRadioButtons(String[] answerSet) {
 		option1.setText(answerSet[0]);
 		option2.setText(answerSet[1]);
@@ -70,16 +88,25 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	class SubmitListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Submit button pressed!");
+			submitAnswer = true;
 		}
 	}
 	
 	class RadioButtonListener implements ActionListener {
-		String currAnswer = "";
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("Radio button pressed!");
-			//currAnswer = this.getText();
+			if (e.getSource() == option1) 
+				selection = option1.getText();
+			if (e.getSource() == option2) 
+				selection = option2.getText();
+			if (e.getSource() == option3) 
+				selection = option3.getText();
+			if (e.getSource() == option4) 
+				selection = option4.getText();
+			//System.out.print(selection);
 		}	
 	}
+	
+	@Override
+	public boolean answerSubmitted() {return this.submitAnswer;}
 }
