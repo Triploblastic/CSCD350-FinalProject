@@ -3,8 +3,8 @@ package TriviaQuestions;
 import java.util.Random;
 
 public class MovieTriviaQuestion extends TriviaQuestion {
-	private MovieTriviaQuestionPrompt prompt = null;
-	private MovieTriviaAnswerSet answerSet = null;
+	private MovieTriviaQuestionPrompt prompt;
+	private MovieTriviaAnswerSet answerSet;
 	
 	public MovieTriviaQuestion() {
 		this.prompt = new MovieTriviaQuestionPrompt();
@@ -22,8 +22,13 @@ public class MovieTriviaQuestion extends TriviaQuestion {
 
 
 	public void displayPrompt() {
-		try {getPrompt().setVisible(true);} 
-		catch (Exception e) {e.printStackTrace();}
+		try {
+			getPrompt().setVisible(true);
+			System.out.println("end getPrompt(inner)");
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override

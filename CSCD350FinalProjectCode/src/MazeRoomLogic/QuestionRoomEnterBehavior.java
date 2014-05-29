@@ -12,9 +12,11 @@ public class QuestionRoomEnterBehavior implements MazeRoomEnterBehavior {
 	@Override
 	public boolean enter() {
 		TriviaQuestion question = questionFactory.buildQuestion();
+		System.out.println("start displayPrompt()");
 		question.displayPrompt();
+		System.out.println("end displayPrompt()");
 		while(!question.isSubmitted()){
-			//System.out.println(((MovieTriviaQuestion)question).getPrompt().getSelection());
+			System.out.println(((MovieTriviaQuestion)question).getPrompt().getSelection());
 		}
 		return question.isCorrectAnswer();
 	}

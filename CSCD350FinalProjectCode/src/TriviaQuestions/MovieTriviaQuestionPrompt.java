@@ -17,7 +17,6 @@ public class MovieTriviaQuestionPrompt extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JFrame pathFrame;
 	private JLabel prompt;
 	private JButton submit; 
 	private JRadioButton option1, option2, option3, option4;
@@ -43,25 +42,30 @@ public class MovieTriviaQuestionPrompt extends JFrame {
 		option1 = new JRadioButton("New radio button");
 		buttonGroup.add(option1);
 		option1.setBounds(44, 72, 199, 23);
+		option1.addActionListener(radioListener);
 		contentPane.add(option1);
 		
 		option2 = new JRadioButton("New radio button");
 		buttonGroup.add(option2);
 		option2.setBounds(44, 98, 199, 23);
+		option2.addActionListener(radioListener);
 		contentPane.add(option2);
 		
 		option3 = new JRadioButton("New radio button");
 		buttonGroup.add(option3);
 		option3.setBounds(44, 122, 199, 23);
+		option3.addActionListener(radioListener);
 		contentPane.add(option3);
 		
 		option4 = new JRadioButton("New radio button");
 		buttonGroup.add(option4);
 		option4.setBounds(44, 148, 199, 23);
+		option4.addActionListener(radioListener);
 		contentPane.add(option4);
 		
 		submit = new JButton("Submit");
 		submit.setBounds(154, 210, 89, 23);
+		submit.addActionListener(submitListener);
 		contentPane.add(submit);
 	}
 
