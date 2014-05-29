@@ -32,7 +32,7 @@ public class TestClient {
 				//System.out.println(q.toString());
 				q.displayPrompt();
 				while(!q.isSubmitted()) {System.out.println(((MovieTriviaQuestion)q).getPrompt().getSelection());}
-				System.out.println("The answer selected is :" + q.isCorrectAnswer());
+				System.out.println("The answer is:" + q.isCorrectAnswer());
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
