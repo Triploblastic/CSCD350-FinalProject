@@ -31,13 +31,13 @@ public class MovieTriviaQuestionFactory extends QuestionFactory {
 			ResultSet rs = dbManager.getRandomTuple();
 			//System.out.println("query successful");
 			a.setAnswer(rs.getString(3));
-			//System.out.println("setAnswer()");
+			System.out.println("setAnswer()");
 			setAnswerSet(a, rs);
-			//System.out.println("setAnswerSet()");
+			System.out.println("setAnswerSet()");
 			p.setPrompt(rs.getString(2));
-			//System.out.println("setPrompt()");
+			System.out.println("setPrompt()");
 			p.setRadioButtons(a.getAnswerSet());
-			//System.out.println("setRadioButtons");
+			//System.out.println("setRadioButtons()");
 			//((MovieTriviaResponseHandler)a.getResponseHandler()).setResponseHandlerButtons(p);
 			//System.out.println("setResponseHandlerButtons()");
 		} catch (Exception e) {

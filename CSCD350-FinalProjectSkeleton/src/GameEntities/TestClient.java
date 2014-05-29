@@ -31,7 +31,7 @@ public class TestClient {
 				q = factory.buildQuestion();
 				//System.out.println(q.toString());
 				q.displayPrompt();
-				while(!q.getPrompt().answerSubmitted()) {System.out.println(q.getPrompt().getSelection());}
+				while(!q.isSubmitted()) {System.out.println(((MovieTriviaQuestion)q).getPrompt().getSelection());}
 				System.out.println("The answer selected is :" + q.submitResponse());
 			}
 		} catch (Exception e) {

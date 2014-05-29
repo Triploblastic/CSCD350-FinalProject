@@ -30,7 +30,7 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	private ActionListener radioListener = new RadioButtonListener();
 	private ActionListener submitListener = new SubmitListener();
 	private String selection = null;
-	private boolean submitAnswer = false;
+	private boolean submitted = false;
 	
 
 	public MovieTriviaQuestionPrompt() {
@@ -65,6 +65,7 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 		
 		submit = new JButton("Submit");
 		submit.setBounds(163, 249, 97, 25);
+		submit.addActionListener(submitListener);
 		contentPane.add(submit);
 	}
 
@@ -74,7 +75,6 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	public JRadioButton getOption3() {return this.option3;}
 	public JRadioButton getOption4() {return this.option4;}
 	public JButton getSubmit() {return this.submit;}
-	public String getSelection() {return this.selection;}
 	
 	/*setters*/
 	public void setPrompt(String prompt) {this.prompt.setText("<html>" + prompt + "</html>");}
@@ -85,10 +85,15 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 		option4.setText(answerSet[3]);
 	}
 	
+	public String getSelection() {return this.selection;}
+	
+	@Override
+	public boolean isSubmitted() {return this.submitted;}
+	
 	class SubmitListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			submitAnswer = true;
+			submitted = true;
 		}
 	}
 	
@@ -103,10 +108,7 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 				selection = option3.getText();
 			if (e.getSource() == option4) 
 				selection = option4.getText();
-			//System.out.print(selection);
+			System.out.print(selection);
 		}	
 	}
-	
-	@Override
-	public boolean answerSubmitted() {return this.submitAnswer;}
 }
