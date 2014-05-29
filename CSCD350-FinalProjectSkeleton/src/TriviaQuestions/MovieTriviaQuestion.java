@@ -29,7 +29,8 @@ public class MovieTriviaQuestion extends TriviaQuestion {
 	@Override
 	public boolean isSubmitted() {return prompt.isSubmitted();}
 	
-	public boolean submitResponse() {
+	@Override
+	public boolean isCorrectAnswer() {
 		return answerSet.getAnswer().equals(prompt.getSelection());
 	}
 	

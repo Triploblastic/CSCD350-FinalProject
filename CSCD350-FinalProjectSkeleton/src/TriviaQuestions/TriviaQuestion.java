@@ -16,7 +16,7 @@ public class TriviaQuestion {
 	public void setTriviaQuestionPrompt(TriviaQuestionPrompt p) {this.prompt = p;}
 	public void setTriviaAnswerSet(TriviaAnswerSet a) {this.answerSet = a;}
 	
-	public boolean submitResponse() {return true;}
+	public boolean isCorrectAnswer() {return true;}
 	public boolean isSubmitted() {return prompt.isSubmitted();}
 	
 	public void displayPrompt() {prompt.displayPrompt();}
