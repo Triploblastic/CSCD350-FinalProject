@@ -1,4 +1,0 @@
-CSCD350FinalProject
-===================
-
-TriviaMaze
