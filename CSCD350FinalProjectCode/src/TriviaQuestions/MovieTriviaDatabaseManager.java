@@ -31,6 +31,8 @@ public class MovieTriviaDatabaseManager {
 	
 	public ResultSet getRandomTuple() throws Exception {
 		index++;
+		if (index > tupleCount)
+			index = 1;
 		String sql = "SELECT * FROM MovieTrivia WHERE id = " + ids[index];
 		ResultSet rs = s.executeQuery(sql);
 		return rs;
