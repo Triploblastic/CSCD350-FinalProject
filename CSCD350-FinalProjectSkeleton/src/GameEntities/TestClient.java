@@ -29,7 +29,7 @@ public class TestClient {
 		try {
 			for (int i = 0; i < 1; i++) {
 				q = factory.buildQuestion();
-				System.out.println(q.toString());
+				//System.out.println(q.toString());
 				q.displayPrompt();
 			}
 		} catch (Exception e) {

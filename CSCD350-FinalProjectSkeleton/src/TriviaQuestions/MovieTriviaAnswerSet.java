@@ -3,28 +3,29 @@ package TriviaQuestions;
 import java.util.Random;
 
 public class MovieTriviaAnswerSet extends TriviaAnswerSet {
-	private QuestionResponseHandler responseHandler = null;
-	private String answer = null;
+	private TriviaResponseHandler responseHandler = null;
 	private String[] answerSet = new String[4];
+	private String answer;
 	
 	/*getters*/
-	public QuestionResponseHandler getResponseHandler() {return responseHandler;}
+	public TriviaResponseHandler getResponseHandler() {return responseHandler;}
 	public String getAnswer() {return answer;}
 	public String[] getAnswerSet() {return answerSet;}
 
 	/*setters*/
-	public void setResponseHandler(QuestionResponseHandler responseHandler) {this.responseHandler = responseHandler;}
+	public void setResponseHandler(TriviaResponseHandler responseHandler) {this.responseHandler = responseHandler;}
 	public void setAnswer(String answer) {this.answer = answer;}
 	public void setAnswerSet(String[] ara) {
 		int size = answerSet.length;
 		if (ara.length != size)
 			throw new IllegalArgumentException("String array must have length = " + size);
-		for(int i = 0; i < size; i++)
+		for(int i = 0; i < size; i++) {
 			this.answerSet[i] = ara[i];
+		}
 	}
 
 
-	MovieTriviaAnswerSet() {responseHandler = new QuestionResponseHandler();}
+	MovieTriviaAnswerSet() {responseHandler = new TriviaResponseHandler();}
 	
 	public boolean validateResponse(String response) {
 		return true;

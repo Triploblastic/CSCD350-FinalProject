@@ -1,11 +1,9 @@
 package TriviaQuestions;
 
 public abstract class TriviaAnswerSet {
-	private QuestionResponseHandler responseHandler = null;
+	private TriviaResponseHandler responseHandler = null;
 	
-	TriviaAnswerSet() {
-		responseHandler = new QuestionResponseHandler();
-	}
+	TriviaAnswerSet() {}
 	
 	public boolean validateResponse(String response) {
 		return true;
