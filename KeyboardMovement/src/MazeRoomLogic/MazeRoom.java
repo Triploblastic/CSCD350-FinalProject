@@ -3,33 +3,35 @@ package MazeRoomLogic;
 import MazeGame.Player;
 
 public class MazeRoom {
-	private PlayerEffect winItem;
-	private PlayerEffect loseItem;
+	private PlayerEffect winEffect;
+	private PlayerEffect loseEffect;
 	private MazeRoomEnterBehavior enterBehavior;
-	private boolean isEntered;
+	private boolean isVisited;
 
 	public boolean enter() {
-		if(enterBehavior.enter()){
-			winItem.ApplyEffect();
-			isEntered = true;
-			return true;
+		if(!isVisited){
+			if(enterBehavior.enter()){
+				winEffect.ApplyEffect();
+				isVisited = true;
+				return true;
+			}
+			loseEffect.ApplyEffect();
+			return false;
 		}
-		loseItem.ApplyEffect();
-		return false;
+		return true;
 	}
 
-	public void setWinItem(PlayerEffect item){
-		winItem = item;
+	public void setWinEffect(PlayerEffect effect){
+		winEffect = effect;
 	}
 	
-	public void setLoseItem(PlayerEffect item){
-		loseItem = item;
+	public void setLoseEffect(PlayerEffect effect){
+		loseEffect = effect;
 	}
 
 
 	public void leave() {
-
-
+		//Remove?
 	}
 
 	public MazeRoomEnterBehavior getEnterBehavior(){

@@ -12,6 +12,7 @@ import MazeRoomLogic.QuestionRoomEnterBehavior;
 import MazeRoomLogic.StartRoomEnterBehavior;
 import MazeRoomLogic.WallRoomEnterBehavior;
 
+//This class assembles each MazeRoom object with appropriate WinEffect, LoseEffect and EnterBehavior behaviors
 public class MazeRoomFactory {
 
 	private static MazeRoomFactory instance = null;
@@ -31,26 +32,31 @@ public class MazeRoomFactory {
 	public MazeRoom getMazeRoom(RoomType roomType){
 		MazeRoom result = new MazeRoom();
 		result.setEnterBehavior(getBehavior(roomType));
-		result.setWinItem(getWinEffect(roomType));
-		result.setLoseItem(getLoseEffect(roomType));
+		result.setWinEffect(getWinEffect(roomType));
+		result.setLoseEffect(getLoseEffect(roomType));
 		return result;
 	}
 	
 	private PlayerEffect getWinEffect(RoomType roomType) {
-		PlayerEffect effect;
+		PlayerEffect effect = null;
+		int randNum = rand.nextInt(100);
 		switch(roomType){
 		case DOOR:
+			effect = new UseKeyEffect();
 			break;
 		case EXIT:
+			effect = new WinGameEffect();
 			break;
 		case PATH:
-			if(rand.nextInt(100) < 30)
-			break;
-		case START:
-			break;
-		case WALL:
+			if(randNum < 30)
+				effect = new IncreaseHealthEffect();
+			else if(randNum > 70)
+				effect = new GrantKeyEffect();
+			else
+				effect = new GrantPointsEffect();
 			break;
 		default:
+			effect = new NullEffect();
 			break;
 		
 		}
@@ -59,20 +65,10 @@ public class MazeRoomFactory {
 	
 	private PlayerEffect getLoseEffect(RoomType roomType) {
 		PlayerEffect effect;
-		switch(roomType){
-		case DOOR:
-			break;
-		case EXIT:
-			break;
-		case PATH:
-			break;
-		case START:
-			break;
-		case WALL:
-			break;
-		default:
-			break;
-		
+		if (roomType.equals(RoomType.PATH)){
+			effect = new DecreaseHealthEffect();
+		} else {
+			effect = new NullEffect();
 		}
 		return effect;
 	}

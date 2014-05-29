@@ -10,20 +10,19 @@ import MazeRoomLogic.MazeNode;
 
 public class Player {
 	
-	private int x, y, tileX, tileY;
+	private int tileX, tileY;
 	private Image player;
 	private MazeNode currentMazeNode;
 	private Direction facingDirection;
 	private int health;
 	private int keys;
 	private static Player Instance;
+	private int points;
 	
+	//Initialization
 	private Player(){
 		facingDirection = Direction.SOUTH;
-		health = 3;
-//		this.x=32;
-//		this.y=32;
-		
+		health = 3;	
 	}
 	
 	public static Player getInstance(){
@@ -36,7 +35,9 @@ public class Player {
 		this.tileX = xStart;
 		this.tileY = yStart;
 	}
+	//End Initialization
 	
+	//Public Getters
 	public Image getPlayerImage(){
 		StringBuilder playerImg;
 		switch(facingDirection){
@@ -65,6 +66,42 @@ public class Player {
 		return this.player;
 	}
 	
+	public int getPoints(){
+		return points;
+	}
+	
+	public int getKeys(){
+		return keys;
+	}
+	
+	public int getHealth(){
+		return health;
+	}
+	
+	public MazeNode getCurrentMazeNode(){
+		return currentMazeNode;
+	}
+	
+	public int getTileX(){
+		return this.tileX;
+	}
+	
+	public int getTileY(){
+		return this.tileY;
+	}
+	//End Public Getters
+	
+	//Public Setters
+	public void setDirection(Direction direction){
+		facingDirection = direction;
+	}
+	
+	public void setCurrentMazeNode(MazeNode currentNode){
+		currentMazeNode = currentNode;
+	}
+	//End Public Setters
+	
+	//Public Modification Behaviors
 	public void move(int tx, int ty){
 		this.tileX+=tx;
 		this.tileY+=ty;
@@ -86,31 +123,9 @@ public class Player {
 		keys = keys > 0 ? keys-1 : 0;
 	}
 	
-	public int getKeys(){
-		return keys;
+	public void addPoints(int amount){
+		points += amount;
 	}
+	//End Public Modification Behaviors
 	
-	public int getHealth(){
-		return health;
-	}
-	
-	public void setDirection(Direction direction){
-		facingDirection = direction;
-	}
-	
-	public void setCurrentMazeNode(MazeNode currentNode){
-		currentMazeNode = currentNode;
-	}
-	
-	public MazeNode getCurrentMazeNode(){
-		return currentMazeNode;
-	}
-	
-	public int getTileX(){
-		return this.tileX;
-	}
-	
-	public int getTileY(){
-		return this.tileY;
-	}
 }

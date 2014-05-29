@@ -1,11 +1,12 @@
 package MazeRoomLogic;
 
+import MazeGame.Player;
+
 public class GrantKeyEffect implements PlayerEffect {
 
 	@Override
 	public void ApplyEffect() {
-		// TODO Auto-generated method stub
-
+		Player.getInstance().addKey();
 	}
 
 }
