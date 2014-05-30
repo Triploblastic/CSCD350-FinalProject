@@ -2,82 +2,85 @@ package TriviaQuestions;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
+
+import java.awt.TextArea;
+
 import javax.swing.JRadioButton;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MovieTriviaQuestionPrompt extends JFrame {
-
-	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JLabel prompt;
+	protected JPanel contentPane;
+	private JLabel quote;
 	private JButton submit; 
 	private JRadioButton option1, option2, option3, option4;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private ActionListener radioListener = new RadioButtonListener();
 	private ActionListener submitListener = new SubmitListener();
 	private String selection = null;
 	private boolean submitted = false;
-	/**
-	 * Create the frame.
-	 */
+	
+
 	public MovieTriviaQuestionPrompt() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 368);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		prompt = new JLabel("New label");
-		prompt.setBounds(44, 24, 345, 41);
-		contentPane.add(prompt);
+		quote = new JLabel("New label");
+		quote.setBounds(48, 13, 335, 60);
+		contentPane.add(quote);
 		
 		option1 = new JRadioButton("New radio button");
 		buttonGroup.add(option1);
-		option1.setBounds(44, 72, 199, 23);
+		option1.setBounds(27, 94, 356, 25);
 		option1.addActionListener(radioListener);
 		contentPane.add(option1);
 		
 		option2 = new JRadioButton("New radio button");
 		buttonGroup.add(option2);
-		option2.setBounds(44, 98, 199, 23);
+		option2.setBounds(27, 124, 356, 25);
 		option2.addActionListener(radioListener);
 		contentPane.add(option2);
 		
 		option3 = new JRadioButton("New radio button");
 		buttonGroup.add(option3);
-		option3.setBounds(44, 122, 199, 23);
+		option3.setBounds(27, 154, 356, 25);
 		option3.addActionListener(radioListener);
 		contentPane.add(option3);
 		
 		option4 = new JRadioButton("New radio button");
 		buttonGroup.add(option4);
-		option4.setBounds(44, 148, 199, 23);
+		option4.setBounds(27, 184, 356, 25);
 		option4.addActionListener(radioListener);
 		contentPane.add(option4);
 		
 		submit = new JButton("Submit");
-		submit.setBounds(154, 210, 89, 23);
+		submit.setBounds(163, 249, 97, 25);
 		submit.addActionListener(submitListener);
 		contentPane.add(submit);
 	}
 
 	/*getters*/
-	public JRadioButton getOption1() {return this.option1;}
-	public JRadioButton getOption2() {return this.option2;}
-	public JRadioButton getOption3() {return this.option3;}
-	public JRadioButton getOption4() {return this.option4;}
 	public JButton getSubmit() {return this.submit;}
 	
 	/*setters*/
-	public void setPrompt(String prompt) {this.prompt.setText("<html>" + prompt + "</html>");}
+	public void setPrompt(String prompt) {
+		this.quote.setText("<html>" + prompt + "</html>");}
 	public void setRadioButtons(String[] answerSet) {
 		option1.setText(answerSet[0]);
 		option2.setText(answerSet[1]);
@@ -85,14 +88,8 @@ public class MovieTriviaQuestionPrompt extends JFrame {
 		option4.setText(answerSet[3]);
 	}
 	
-	public void displayPrompt() {
-		try {this.setVisible(true);} 
-		catch (Exception e) {e.printStackTrace();}
-	}
-	
 	public String getSelection() {return this.selection;}
 	
-
 	public boolean isSubmitted() {return this.submitted;}
 	
 	class SubmitListener implements ActionListener {
@@ -117,4 +114,3 @@ public class MovieTriviaQuestionPrompt extends JFrame {
 		}	
 	}
 }
-

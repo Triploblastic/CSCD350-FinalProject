@@ -21,17 +21,14 @@ public class MovieTriviaDatabaseManager {
 	public void connectToDatabase() throws Exception {
 		Class.forName("org.sqlite.JDBC");
 		c = DriverManager.getConnection("jdbc:sqlite:MovieQuoteTrivia.db");
-		//System.out.println("Connection successfull");
 		s = c.createStatement();
 		tupleCount = countTuples(s);
-		//System.out.println("tuplescounted : " + tupleCount);
 		ids = randomizeIDs(tupleCount);	
-		//System.out.println("id's randomized");
 	}
 	
 	public ResultSet getRandomTuple() throws Exception {
 		index++;
-		if (index > tupleCount)
+		if(index > tupleCount)
 			index = 1;
 		String sql = "SELECT * FROM MovieTrivia WHERE id = " + ids[index];
 		ResultSet rs = s.executeQuery(sql);

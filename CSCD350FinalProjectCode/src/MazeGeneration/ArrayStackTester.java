@@ -3,9 +3,9 @@ package MazeGeneration;
 public class ArrayStackTester {
 	
 	public static void main(String[] args) {
-
-		defaultCapacityTest();
-		exceptionsTest();
+		System.out.println("do nothing");
+		//defaultCapacityTest();
+		//exceptionsTest();
 				
 	}
 	

@@ -2,20 +2,17 @@ package TriviaQuestions;
 
 import java.util.Random;
 
-public class MovieTriviaAnswerSet extends TriviaAnswerSet {
-	private TriviaResponseHandler responseHandler = null;
+public class MovieTriviaAnswerSet {
 	private String[] answerSet = new String[4];
 	private String answer;
 	
-	MovieTriviaAnswerSet() {this.responseHandler = new MovieTriviaResponseHandler();}
+	MovieTriviaAnswerSet() {}
 	
 	/*getters*/
-	public TriviaResponseHandler getResponseHandler() {return responseHandler;}
 	public String getAnswer() {return answer;}
 	public String[] getAnswerSet() {return answerSet;}
 
 	/*setters*/
-	public void setResponseHandler(TriviaResponseHandler responseHandler) {this.responseHandler = responseHandler;}
 	public void setAnswer(String answer) {this.answer = answer;}
 	public void setAnswerSet(String[] ara) {
 		int size = answerSet.length;
