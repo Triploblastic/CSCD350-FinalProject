@@ -21,9 +21,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
-	private JFrame pathFrame;
-	private JLabel prompt;
+public class MovieTriviaQuestionPrompt extends JFrame {
+	protected JPanel contentPane;
+	private JLabel quote;
 	private JButton submit; 
 	private JRadioButton option1, option2, option3, option4;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -34,10 +34,16 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	
 
 	public MovieTriviaQuestionPrompt() {
-
-		prompt = new JLabel("New label");
-		prompt.setBounds(48, 13, 335, 60);
-		contentPane.add(prompt);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 368);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		quote = new JLabel("New label");
+		quote.setBounds(48, 13, 335, 60);
+		contentPane.add(quote);
 		
 		option1 = new JRadioButton("New radio button");
 		buttonGroup.add(option1);
@@ -70,14 +76,11 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	}
 
 	/*getters*/
-	public JRadioButton getOption1() {return this.option1;}
-	public JRadioButton getOption2() {return this.option2;}
-	public JRadioButton getOption3() {return this.option3;}
-	public JRadioButton getOption4() {return this.option4;}
 	public JButton getSubmit() {return this.submit;}
 	
 	/*setters*/
-	public void setPrompt(String prompt) {this.prompt.setText("<html>" + prompt + "</html>");}
+	public void setPrompt(String prompt) {
+		this.quote.setText("<html>" + prompt + "</html>");}
 	public void setRadioButtons(String[] answerSet) {
 		option1.setText(answerSet[0]);
 		option2.setText(answerSet[1]);
@@ -87,7 +90,6 @@ public class MovieTriviaQuestionPrompt extends TriviaQuestionPrompt {
 	
 	public String getSelection() {return this.selection;}
 	
-	@Override
 	public boolean isSubmitted() {return this.submitted;}
 	
 	class SubmitListener implements ActionListener {

@@ -48,7 +48,6 @@ public class DataBaseBuilder {
 	
 	public static void insertTuples() throws Exception {
 		insertQuoteAndMovie();
-		System.out.println("Questions and answers inserted");
 		insertWrongOptions();
 	}
 	
@@ -76,7 +75,6 @@ public class DataBaseBuilder {
 		int index = 0;
 		while (tupleID > 0) {
 			Collections.shuffle(movies);
-			//System.out.println(movies.toString());
 			for (int i = 1; i < 4; i++) {
 				rsltSet = s.executeQuery("SELECT answer FROM MovieTrivia WHERE id =" + tupleID);
 				movie = rsltSet.getString(1);
@@ -84,7 +82,6 @@ public class DataBaseBuilder {
 				while (movie.equals(movies.get(index))) { //ensuring correct answer is not inserted as a wrong choice
 					index = random.nextInt(size);
 				} 
-				//System.out.print("movie to insert: " + movies.get(index));
 				sql = "UPDATE MovieTrivia " +
 					  "SET wrong" + i + " = '" + movies.get(index) + "'" +
 					  "WHERE id =" + tupleID + ";";

@@ -24,21 +24,20 @@ public class TestClient {
 //		view.movePlayer(Direction.EAST);
 //		view.movePlayer(Direction.EAST);
 //		int x =0;
-		QuestionFactory factory = new MovieTriviaQuestionFactory();
-		TriviaQuestion q = null;
+		MovieTriviaQuestionFactory factory = new MovieTriviaQuestionFactory();
+		MovieTriviaQuestion q = null;
 		try {
 			for (int i = 0; i < 1; i++) {
-				q = factory.buildQuestion();
+				q = (MovieTriviaQuestion)factory.buildQuestion();
 				//System.out.println(q.toString());
 				q.displayPrompt();
-				while(!q.isSubmitted()) {System.out.println(((MovieTriviaQuestion)q).getPrompt().getSelection());}
+				while(!q.isSubmitted()) {
+					System.out.println("listening");
+				}
 				System.out.println("The answer is:" + q.isCorrectAnswer());
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
 		}
-		
-		
-		
 	}
 }
