@@ -27,8 +27,8 @@ public class Board extends JPanel implements ActionListener{
 		
 		addKeyListener(new Al());
 		setFocusable(true);
-		timer = new Timer(25, this);
-		this.timer.start();
+		//timer = new Timer(25, this);
+		//this.timer.start();
 	}
 	
 	@Override
@@ -37,6 +37,7 @@ public class Board extends JPanel implements ActionListener{
 		
 	}
 
+	@Override
 	public void paint(Graphics g){
 		super.paint(g);
 
@@ -91,7 +92,8 @@ public class Board extends JPanel implements ActionListener{
 				p.setDirection(Direction.EAST);
 				if(m.tryMovePlayer(Direction.EAST))
 					p.move(1, 0);				
-			}			
+			}
+			actionPerformed(null);
 		}
 		
 		public void keyReleased(KeyEvent e){

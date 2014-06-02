@@ -18,7 +18,10 @@ public class MovieTriviaQuestion {
 	public void setAnswerSet(MovieTriviaAnswerSet answerSet) {this.answerSet = answerSet;}
 
 	public void displayPrompt() {
-		try {prompt.setVisible(true);} 
+		try {
+			prompt.setAlwaysOnTop(true);
+			prompt.setVisible(true);
+		} 
 		catch (Exception e) {e.printStackTrace();}
 	}
 	

@@ -2,6 +2,7 @@ package TriviaQuestions;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.LayoutManager;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -17,11 +18,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JDialog;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class MovieTriviaQuestionPrompt extends JFrame {
+public class MovieTriviaQuestionPrompt extends JDialog {
 	protected JPanel contentPane;
 	private JLabel quote;
 	private JButton submit; 
@@ -34,12 +36,14 @@ public class MovieTriviaQuestionPrompt extends JFrame {
 	
 
 	public MovieTriviaQuestionPrompt() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 368);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		add(contentPane);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		contentPane.setFocusable(true);
 		
 		quote = new JLabel("New label");
 		quote.setBounds(48, 13, 335, 60);
