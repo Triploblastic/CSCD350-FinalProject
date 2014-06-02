@@ -4,13 +4,14 @@ import javax.swing.JFrame;
 
 public class Maze {
 
+	public static Thread thread;
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		new Maze();
 	}
 	
 	public Maze(){
-		Thread t = new Thread(new Runnable(){
+		thread = new Thread(new Runnable(){
 			public void run(){
 				JFrame frame = new JFrame();
 				frame.setTitle("Trivia Maze Game");
@@ -22,6 +23,6 @@ public class Maze {
 			}
 		});
 		//t.setPriority(Thread.MAX_PRIORITY);
-		t.start();
+		thread.start();
 	}
 }

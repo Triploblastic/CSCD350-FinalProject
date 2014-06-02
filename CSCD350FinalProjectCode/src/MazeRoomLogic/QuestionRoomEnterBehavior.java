@@ -2,6 +2,7 @@ package MazeRoomLogic;
 
 import java.util.Random;
 
+import MazeGame.Maze;
 import TriviaQuestions.*;
 
 public class QuestionRoomEnterBehavior implements MazeRoomEnterBehavior {
@@ -19,20 +20,21 @@ public class QuestionRoomEnterBehavior implements MazeRoomEnterBehavior {
 				question.displayPrompt();
 				int i = 0;
 				while(!question.isSubmitted()){
-					i--;
-					System.out.println(i++);
+					/*i--;
+					System.out.println(i++);*/
 				}
 				isCorrect = question.isCorrectAnswer();
 			}
 			
 		});
 		t.setPriority(Thread.MAX_PRIORITY);
-		t.start();
-//		try{
-//			
-//		} catch (InterruptedException e){
-//			
-//		}
+		t.start();/*
+		while(isCorrect == null);*/
+/*		try{
+			t.join();
+		} catch (InterruptedException e){
+			
+		}*/
 		return isCorrect;
 	}
 
