@@ -27,8 +27,8 @@ public class Board extends JPanel implements ActionListener{
 		
 		addKeyListener(new Al());
 		setFocusable(true);
-		//timer = new Timer(25, this);
-		//this.timer.start();
+		timer = new Timer(25, this);
+		this.timer.start();
 	}
 	
 	@Override
@@ -71,29 +71,36 @@ public class Board extends JPanel implements ActionListener{
 	//This is where we merge our room behavior code.
 	public class Al extends KeyAdapter{
 		public void keyPressed(KeyEvent e){
-			int keycode=e.getKeyCode();
+			final int keycode=e.getKeyCode();
 			
-			if(keycode==KeyEvent.VK_W){
-				p.setDirection(Direction.NORTH);
-				if(m.tryMovePlayer(Direction.NORTH))
-					p.move(0, -1);
-			}
-			if(keycode==KeyEvent.VK_S){
-				p.setDirection(Direction.SOUTH);
-				if(m.tryMovePlayer(Direction.SOUTH))
-					p.move(0, 1);
-			}
-			if(keycode==KeyEvent.VK_A){
-				p.setDirection(Direction.WEST);
-				if(m.tryMovePlayer(Direction.WEST))
-					p.move(-1, 0);
-			}
-			if(keycode==KeyEvent.VK_D){
-				p.setDirection(Direction.EAST);
-				if(m.tryMovePlayer(Direction.EAST))
-					p.move(1, 0);				
-			}
+			Thread t = new Thread(new Runnable() {
+				public void run(){
+					if(keycode==KeyEvent.VK_W){
+						p.setDirection(Direction.NORTH);
+						if(m.tryMovePlayer(Direction.NORTH))
+							p.move(0, -1);
+					}
+					if(keycode==KeyEvent.VK_S){
+						p.setDirection(Direction.SOUTH);
+						if(m.tryMovePlayer(Direction.SOUTH))
+							p.move(0, 1);
+					}
+					if(keycode==KeyEvent.VK_A){
+						p.setDirection(Direction.WEST);
+						if(m.tryMovePlayer(Direction.WEST))
+							p.move(-1, 0);
+					}
+					if(keycode==KeyEvent.VK_D){
+						p.setDirection(Direction.EAST);
+						if(m.tryMovePlayer(Direction.EAST))
+							p.move(1, 0);				
+					}
+					
+				}
+			});
+			t.start();
 			actionPerformed(null);
+			
 		}
 		
 		public void keyReleased(KeyEvent e){

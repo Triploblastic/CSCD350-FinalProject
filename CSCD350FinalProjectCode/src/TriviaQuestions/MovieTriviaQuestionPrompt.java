@@ -23,6 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
+import MazeGame.Maze;
+
 public class MovieTriviaQuestionPrompt extends JDialog {
 	protected JPanel contentPane;
 	private JLabel quote;
@@ -36,11 +38,12 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 	
 
 	public MovieTriviaQuestionPrompt() {
+		super(Maze.mainWindow);
 		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 368);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		add(contentPane);
+//		add(contentPane);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		contentPane.setFocusable(true);
@@ -84,7 +87,8 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 	
 	/*setters*/
 	public void setPrompt(String prompt) {
-		this.quote.setText("<html>" + prompt + "</html>");}
+		this.quote.setText("<html>" + prompt + "</html>");
+	}
 	public void setRadioButtons(String[] answerSet) {
 		option1.setText(answerSet[0]);
 		option2.setText(answerSet[1]);

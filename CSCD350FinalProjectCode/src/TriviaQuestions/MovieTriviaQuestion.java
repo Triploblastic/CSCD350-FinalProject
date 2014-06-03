@@ -25,6 +25,10 @@ public class MovieTriviaQuestion {
 		catch (Exception e) {e.printStackTrace();}
 	}
 	
+	public void closePrompt() {
+		prompt.dispose();
+	}
+	
 	public boolean isSubmitted() {return prompt.isSubmitted();}
 
 	public boolean isCorrectAnswer() {
