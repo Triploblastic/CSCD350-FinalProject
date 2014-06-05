@@ -6,7 +6,7 @@ public class WinGameEffect implements PlayerEffect {
 
 	@Override
 	public void ApplyEffect() {
-		// TODO Auto-generated method stub
+		System.out.println("You win");
 
 	}
 

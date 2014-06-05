@@ -3,6 +3,7 @@ package TriviaQuestions;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.LayoutManager;
+import java.awt.Window;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,8 @@ import javax.swing.JRadioButton;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -39,8 +42,9 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 
 	public MovieTriviaQuestionPrompt() {
 		super(Maze.mainWindow);
-		setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-		setBounds(100, 100, 450, 368);
+		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		
+		setBounds(Maze.mainWindow.getBounds());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 //		add(contentPane);
@@ -80,6 +84,8 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 		submit.setBounds(163, 249, 97, 25);
 		submit.addActionListener(submitListener);
 		contentPane.add(submit);
+		
+		new MovingTogether(Maze.mainWindow, this);
 	}
 
 	/*getters*/
@@ -96,6 +102,10 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 		option4.setText(answerSet[3]);
 	}
 	
+	public JPanel getContentPane(){
+		return contentPane;
+	}
+	
 	public String getSelection() {return this.selection;}
 	
 	public boolean isSubmitted() {return this.submitted;}
@@ -106,6 +116,28 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 			submitted = true;
 		}
 	}
+	
+
+	//new MovingTogether(jFrame1, jDialog1); ("jFrame1" is a JFrame
+	//and "jDialog1" is a non-modal JDialog with jFrame1 as parent)
+	class MovingTogether extends ComponentAdapter{
+	    public MovingTogether(JFrame winA, JDialog winB){
+	        this.winA = winA;
+	        this.winB = winB;
+	        winA.addComponentListener(this);
+	        winB.addComponentListener(this);
+	    }
+	    public void componentMoved(ComponentEvent e) {
+	        Window win = (Window) e.getComponent();
+	        if(win==winA){
+	            winB.removeComponentListener(this);
+	            winB.setLocationRelativeTo(winA);
+	            winB.addComponentListener(this);
+	        } else if(winB.isVisible())  winA.setLocationRelativeTo(winB);
+	    }
+	    private Window winA, winB;
+	}
+
 	
 	class RadioButtonListener implements ActionListener {
 		@Override

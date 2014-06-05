@@ -3,6 +3,8 @@ package TriviaQuestions;
 import java.awt.Dialog.ModalityType;
 import java.util.Random;
 
+import MazeGame.Maze;
+
 public class MovieTriviaQuestion {
 	private MovieTriviaQuestionPrompt prompt = null;
 	private MovieTriviaAnswerSet answerSet = null;
@@ -23,12 +25,19 @@ public class MovieTriviaQuestion {
 			prompt.setAlwaysOnTop(true);
 			//prompt.setModalityType(ModalityType.DOCUMENT_MODAL);
 			prompt.setVisible(true);
+			prompt.setTitle("Answer this!");
+			
+			/*Maze.mainWindow.setContentPane(prompt.getContentPane());
+			Maze.mainWindow.repaint();
+			System.out.println("Calling thread: " + Thread.currentThread());*/
 		} 
 		catch (Exception e) {e.printStackTrace();}
 	}
 	
 	public void closePrompt() {
 		prompt.dispose();
+		/*Maze.getInstance().setBoardContent();*/
+		
 	}
 	
 	public boolean isSubmitted() {return prompt.isSubmitted();}

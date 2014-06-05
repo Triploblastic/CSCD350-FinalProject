@@ -48,9 +48,10 @@ public class Board extends JPanel implements ActionListener{
 		super.paint(g);
 		
 		for(int i = 0; i < p.getKeys(); i++){
-			g.drawImage(keyIcon.getImage(),(1*32)+5,(int)(m.MAZE_SIZE+.2)*32,null);
+			g.drawImage(keyIcon.getImage(),(i*32)+5,(int)(m.MAZE_SIZE+.2)*32,null);
 		}
 		
+		g.drawString("Score: " + p.getPoints(), 5, (int)((m.MAZE_SIZE+1.5)*32));
 		for(int i=0; i<m.MAZE_SIZE; i++){
 			for(int j=0; j<m.MAZE_SIZE; j++){
 				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.PATH)){
@@ -104,6 +105,14 @@ public class Board extends JPanel implements ActionListener{
 						p.setDirection(Direction.EAST);
 						if(m.tryMovePlayer(Direction.EAST))
 							p.move(1, 0);				
+					}
+					if(keycode==KeyEvent.VK_K){
+						p.addKey();
+						System.out.println("Key cheated in. Player has: " + p.getKeys());
+					}
+					if(keycode==KeyEvent.VK_H){
+						p.increaseHealth();
+						System.out.println("Player gained health!");
 					}
 					
 				}
