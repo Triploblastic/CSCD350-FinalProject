@@ -1,5 +1,6 @@
 package TriviaQuestions;
 
+import java.awt.Dialog.ModalityType;
 import java.util.Random;
 
 public class MovieTriviaQuestion {
@@ -20,6 +21,7 @@ public class MovieTriviaQuestion {
 	public void displayPrompt() {
 		try {
 			prompt.setAlwaysOnTop(true);
+			//prompt.setModalityType(ModalityType.DOCUMENT_MODAL);
 			prompt.setVisible(true);
 		} 
 		catch (Exception e) {e.printStackTrace();}

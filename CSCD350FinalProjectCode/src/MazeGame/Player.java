@@ -23,6 +23,7 @@ public class Player {
 	private Player(){
 		facingDirection = Direction.SOUTH;
 		health = 3;	
+		keys = 1;
 	}
 	
 	public static Player getInstance(){

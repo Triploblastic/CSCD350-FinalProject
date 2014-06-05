@@ -83,7 +83,10 @@ public class MazeRoomFactory {
 			enterBehavior = new ExitRoomEnterBehavior();
 			break;
 		case PATH:
-			enterBehavior = new QuestionRoomEnterBehavior();
+			if(rand.nextDouble() >= .5)
+				enterBehavior = new QuestionRoomEnterBehavior();
+			else
+				enterBehavior = new TrueRoomEnterBehavior();
 			break;
 		case START:
 			enterBehavior = new StartRoomEnterBehavior();

@@ -11,6 +11,7 @@ public class GrantPointsEffect implements PlayerEffect {
 		Random rand = new Random();
 		
 		Player.getInstance().addPoints(rand.nextInt(50) + 100);
+		System.out.println("Player increased points to: " + Player.getInstance().getPoints());
 	}
 
 }

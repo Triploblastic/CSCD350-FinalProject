@@ -25,7 +25,7 @@ public class QuestionRoomEnterBehavior implements MazeRoomEnterBehavior {
 		question.closePrompt();
 		boolean isCorrect = question.isCorrectAnswer();
 
-		System.out.println("Returned " + isCorrect);
+		System.out.println("\nReturned " + isCorrect);
 		return isCorrect;
 	}
 

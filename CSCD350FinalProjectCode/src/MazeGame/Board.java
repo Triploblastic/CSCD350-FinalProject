@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -13,12 +15,14 @@ import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeNode;
 
 public class Board extends JPanel implements ActionListener{
-
+	
 	private Timer timer;
 	
 	private Map m;
 	private Player p;
-	//private MazeNode currentRoom;
+	
+	private static ImageIcon keyIcon = new ImageIcon("key.png");
+	
 	
 	public Board(){
 		m=new Map();
@@ -27,8 +31,10 @@ public class Board extends JPanel implements ActionListener{
 		
 		addKeyListener(new Al());
 		setFocusable(true);
+		
 		timer = new Timer(25, this);
-		this.timer.start();
+		timer.start();
+		
 	}
 	
 	@Override
@@ -40,7 +46,11 @@ public class Board extends JPanel implements ActionListener{
 	@Override
 	public void paint(Graphics g){
 		super.paint(g);
-
+		
+		for(int i = 0; i < p.getKeys(); i++){
+			g.drawImage(keyIcon.getImage(),(1*32)+5,(int)(m.MAZE_SIZE+.2)*32,null);
+		}
+		
 		for(int i=0; i<m.MAZE_SIZE; i++){
 			for(int j=0; j<m.MAZE_SIZE; j++){
 				if(m.getMapTileType(j, i).equals(MazeRoomLogic.MazeEnums.RoomType.PATH)){
@@ -99,7 +109,6 @@ public class Board extends JPanel implements ActionListener{
 				}
 			});
 			t.start();
-			actionPerformed(null);
 			
 		}
 		
