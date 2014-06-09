@@ -43,6 +43,7 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 	public MovieTriviaQuestionPrompt() {
 		super(Maze.mainWindow);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+		setResizable(false);
 		
 		setBounds(Maze.mainWindow.getBounds());
 		contentPane = new JPanel();
