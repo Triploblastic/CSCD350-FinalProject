@@ -1,14 +1,17 @@
 package MazeGame;
 
 import java.awt.Image;
+import java.util.Observable;
 
 import javax.swing.ImageIcon;
 
+import GameOverLogic.GameOverObserver;
+import GameOverLogic.GameOverLoseBehavior;
 import MazeRoomLogic.PlayerEffect;
 import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeNode;
 
-public class Player {
+public class Player extends Observable {
 	
 	private int tileX, tileY;
 	private Image player;
@@ -21,6 +24,7 @@ public class Player {
 	
 	//Initialization
 	private Player(){
+		this.addObserver(new GameOverObserver());
 		facingDirection = Direction.SOUTH;
 		health = 3;	
 		keys = 1;
@@ -114,6 +118,11 @@ public class Player {
 	
 	public void decreaseHealth(){
 		health = health > 0 ? health-1 : 0;
+		if(health == 0){
+			this.setChanged();
+			this.notifyObservers(new GameOverLoseBehavior());
+			this.clearChanged();
+		}
 	}
 	
 	public void addKey(){

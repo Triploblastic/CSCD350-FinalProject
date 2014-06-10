@@ -1,11 +1,21 @@
 package MazeRoomLogic;
 
-public class ExitRoomEnterBehavior implements MazeRoomEnterBehavior {
+import java.util.Observable;
 
-	//assume all exits are enterable
+import GameOverLogic.GameOverWinBehavior;
+import GameOverLogic.GameOverObserver;
+
+public class ExitRoomEnterBehavior extends Observable implements MazeRoomEnterBehavior  {
+
+	public ExitRoomEnterBehavior(){
+		this.addObserver(new GameOverObserver());
+	}
+	
 	@Override
 	public boolean enter() {
-		// TODO Auto-generated method stub
+		this.setChanged();
+		this.notifyObservers(new GameOverWinBehavior());
+		this.clearChanged();
 		return true;
 	}
 
