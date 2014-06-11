@@ -13,6 +13,7 @@ import javax.swing.Timer;
 
 import MazeRoomLogic.MazeEnums.Direction;
 import MazeRoomLogic.MazeNode;
+import java.awt.Color;
 
 public class Board extends JPanel implements ActionListener{
 	
@@ -25,6 +26,7 @@ public class Board extends JPanel implements ActionListener{
 	
 	
 	public Board(){
+		setBackground(new Color(95, 158, 160));
 		m=new Map();
 		p=Player.getInstance();
 		p.setStartLocation(m.getStartY(),m.getStartX());

@@ -27,6 +27,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import MazeGame.Maze;
+import java.awt.Color;
+import java.awt.Font;
 
 public class MovieTriviaQuestionPrompt extends JDialog {
 	protected JPanel contentPane;
@@ -42,11 +44,13 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 
 	public MovieTriviaQuestionPrompt() {
 		super(Maze.mainWindow);
+		setUndecorated(true);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 		setResizable(false);
 		
 		setBounds(Maze.mainWindow.getBounds());
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(95, 158, 160));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 //		add(contentPane);
 		setContentPane(contentPane);
@@ -54,34 +58,50 @@ public class MovieTriviaQuestionPrompt extends JDialog {
 		contentPane.setFocusable(true);
 		
 		quote = new JLabel("New label");
+		quote.setForeground(Color.BLACK);
+		quote.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
 		quote.setBounds(48, 13, 335, 60);
 		contentPane.add(quote);
 		
 		option1 = new JRadioButton("New radio button");
+		option1.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
+		option1.setForeground(Color.BLACK);
+		option1.setBackground(new Color(95, 158, 160));
 		buttonGroup.add(option1);
 		option1.setBounds(27, 94, 356, 25);
 		option1.addActionListener(radioListener);
 		contentPane.add(option1);
 		
 		option2 = new JRadioButton("New radio button");
+		option2.setForeground(Color.BLACK);
+		option2.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
+		option2.setBackground(new Color(95, 158, 160));
 		buttonGroup.add(option2);
 		option2.setBounds(27, 124, 356, 25);
 		option2.addActionListener(radioListener);
 		contentPane.add(option2);
 		
 		option3 = new JRadioButton("New radio button");
+		option3.setForeground(Color.BLACK);
+		option3.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
+		option3.setBackground(new Color(95, 158, 160));
 		buttonGroup.add(option3);
 		option3.setBounds(27, 154, 356, 25);
 		option3.addActionListener(radioListener);
 		contentPane.add(option3);
 		
 		option4 = new JRadioButton("New radio button");
+		option4.setForeground(Color.BLACK);
+		option4.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
+		option4.setBackground(new Color(95, 158, 160));
 		buttonGroup.add(option4);
 		option4.setBounds(27, 184, 356, 25);
 		option4.addActionListener(radioListener);
 		contentPane.add(option4);
 		
 		submit = new JButton("Submit");
+		submit.setFont(new Font("Tekton Pro", Font.PLAIN, 16));
+		submit.setBackground(Color.PINK);
 		submit.setBounds(163, 249, 97, 25);
 		submit.addActionListener(submitListener);
 		contentPane.add(submit);

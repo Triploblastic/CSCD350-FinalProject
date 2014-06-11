@@ -50,7 +50,7 @@ public class MazeRoomFactory {
 		case PATH:
 			if(randNum < 30)
 				effect = new IncreaseHealthEffect();
-			else if(randNum > 70)
+			else if(randNum > 85)
 				effect = new GrantKeyEffect();
 			else
 				effect = new GrantPointsEffect();

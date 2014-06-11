@@ -21,16 +21,22 @@ public class Maze {
 		return instance;
 	}
 	
-	public void setBoardContent(){
+	public void reset(){
+		instance = new Maze();
+	}
+	/*public void setBoardContent(){
 		mainWindow.setContentPane(boardContent);
 		mainWindow.repaint();
-	}
+	}*/
 	
 	private Maze(){
-		/*SwingUtilities.invokeLater(new Runnable(){
-			public void run(){*/
-				
+
+				Player.getInstance().reset();
 				boardContent = new Board();
+				
+				if(mainWindow != null){
+					mainWindow.dispose();
+				}
 				
 				mainWindow = new JFrame();
 				mainWindow.setTitle("Trivia Maze Game");
@@ -40,9 +46,7 @@ public class Maze {
 				mainWindow.setLocationRelativeTo(null);		
 				mainWindow.setVisible(true);
 				mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			/*}
-		});*/
-		//t.setPriority(Thread.MAX_PRIORITY);
+			
 		
 	}
 }

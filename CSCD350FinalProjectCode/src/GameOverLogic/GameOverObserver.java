@@ -1,5 +1,6 @@
 package GameOverLogic;
 
+import java.awt.Dialog.ModalityType;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -36,11 +37,24 @@ public class GameOverObserver implements Observer {
 		
 		hsWindow = new HighScoresWindow();
 		hsWindow.setData(parseToString(),this);
-		hsWindow.setAlwaysOnTop(true);
 		hsWindow.setVisible(true);
+		hsWindow.setModalityType(ModalityType.APPLICATION_MODAL);
 		hsWindow.setBounds(Maze.mainWindow.getBounds());
 		
-		Maze.mainWindow.dispose();
+		try {
+			Thread.sleep(7000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		//Maze.mainWindow.dispose();
+		int option = JOptionPane.showOptionDialog(Maze.mainWindow, "Would you like to play again?", "Play again", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
+		if(option == 0){
+			Maze.getInstance().reset();
+		} else {
+			Maze.mainWindow.dispose();
+			System.exit(0);
+		}
+		
 	}
 
 	public void ClearHighScores(){

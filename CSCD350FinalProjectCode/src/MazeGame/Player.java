@@ -28,6 +28,7 @@ public class Player extends Observable {
 		facingDirection = Direction.SOUTH;
 		health = 3;	
 		keys = 1;
+		points = 0;
 	}
 	
 	public static Player getInstance(){
@@ -125,6 +126,9 @@ public class Player extends Observable {
 		}
 	}
 	
+	public void reset(){
+		Instance = new Player();
+	}
 	public void addKey(){
 		keys++;
 	}

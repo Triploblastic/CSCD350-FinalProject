@@ -4,6 +4,7 @@ import java.util.Observable;
 
 import GameOverLogic.GameOverWinBehavior;
 import GameOverLogic.GameOverObserver;
+import MazeGame.Player;
 
 public class ExitRoomEnterBehavior extends Observable implements MazeRoomEnterBehavior  {
 
@@ -13,6 +14,7 @@ public class ExitRoomEnterBehavior extends Observable implements MazeRoomEnterBe
 	
 	@Override
 	public boolean enter() {
+		Player.getInstance().addPoints(10000);
 		this.setChanged();
 		this.notifyObservers(new GameOverWinBehavior());
 		this.clearChanged();
