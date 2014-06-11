@@ -46,6 +46,7 @@ public class GameOverObserver implements Observer {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+		hsWindow.dispose();
 		//Maze.mainWindow.dispose();
 		int option = JOptionPane.showOptionDialog(Maze.mainWindow, "Would you like to play again?", "Play again", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, null, null);
 		if(option == 0){
