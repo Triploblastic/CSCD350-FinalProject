@@ -15,7 +15,6 @@ public class Player extends Observable {
 	
 	private int tileX, tileY;
 	private Image player;
-	private MazeNode currentMazeNode;
 	private Direction facingDirection;
 	private int health;
 	private int keys;
@@ -84,9 +83,6 @@ public class Player extends Observable {
 		return health;
 	}
 	
-	public MazeNode getCurrentMazeNode(){
-		return currentMazeNode;
-	}
 	
 	public int getTileX(){
 		return this.tileX;
@@ -102,9 +98,7 @@ public class Player extends Observable {
 		facingDirection = direction;
 	}
 	
-	public void setCurrentMazeNode(MazeNode currentNode){
-		currentMazeNode = currentNode;
-	}
+	
 	//End Public Setters
 	
 	//Public Modification Behaviors
